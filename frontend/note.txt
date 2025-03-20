@@ -1,0 +1,4 @@
+khi tạo một file react mới
+chúng ta có thể sử dụng từ viết tắc
+
+rfc để khởi tạo frame code cho dễ dàng và nhanh hơnhơn

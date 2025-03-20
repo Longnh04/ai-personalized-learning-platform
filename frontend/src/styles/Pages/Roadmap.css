@@ -1,0 +1,120 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.roadmap_container {
+  padding: 1.5rem;
+}
+ 
+.roadmap_container-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.roadmap_container-desc {
+  font-size: 1rem;
+  margin-top: 10px;
+  font-style: italic;
+  background-color: #2bef90;
+  width: fit-content;
+  color: var(--white-color);
+}
+
+.roadmap-desc {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 300;
+}
+.create_rm {
+  display: flex;
+  align-items: center;
+  a {
+    margin: 0 auto;
+    font-weight: 300;
+  }
+}
+
+.roadmap_overview-container {
+  display: flex;
+  padding: 1.5rem;
+  margin-top: 20px;
+  gap: 20px;
+
+  .roadmap_overview-card {
+    padding: 1.5rem;
+    box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px,
+      rgba(6, 24, 44, 0.65) 0px 4px 6px -1px,
+      rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+
+    .roadmap_card-content {
+      display: flex;
+
+    .content_flex-left {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+
+        .roadmap_overview-card-title {
+          font-size: 1rem;
+          font-weight: 500;
+        }
+     
+        .roadmap_overview-card-desc {
+          margin-top: 10px;
+          font-size: 0.95rem;
+          font-weight: 300;
+        }
+      }
+
+      .img_flex-right {
+        display: flex;
+        flex-direction: column;
+        width: 30%;
+      }
+    }
+
+    .roadmap_tech-container {
+      display: flex;
+      gap: 1rem;
+
+      .roadmap_tech-item {
+        padding: 0.5rem;
+        border: 2.5px solid var(--secondary-color);
+        border-radius: 50%;
+        display: block;
+        overflow: hidden;
+      }
+
+      img {
+        width: 30px;
+        height: 30px;
+        transition: 0.4s ease-in-out;
+        object-fit: cover;
+        &:hover {
+          transform: scale(1.5);
+          object-fit: cover;
+        }
+      }
+    }
+  }
+}
+
+
+.roadmap_recommendation-container{
+  padding: 1.5rem;
+
+
+  .course_recommend{
+    max-width: 250px;
+    
+
+    
+  }
+
+}

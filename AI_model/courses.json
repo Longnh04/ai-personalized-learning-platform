@@ -1,0 +1,302 @@
+[
+    {
+        "id": 1,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "HTML, CSS Basics",
+        "price": "Free",
+        "author": "Hoang Long",
+        "duration": "10 hours",
+        "level": "basic",
+        "field": "Front End"
+    },
+    {
+        "id": 2,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "C++ Basics",
+        "price": "Free",
+        "author": "Hoang Long",
+        "duration": "8 hours",
+        "level": "basic",
+        "field": "Back End"
+    },
+    {
+        "id": 3,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "JavaScript Basics",
+        "price": "Free",
+        "author": "Hoang Long",
+        "duration": "10 hours",
+        "level": "basic",
+        "field": "Front End"
+    },
+    {
+        "id": 4,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "React Framework",
+        "price": "$49.99",
+        "author": "Minh Tuan",
+        "duration": "15 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 5,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Python for Beginners",
+        "price": "Free",
+        "author": "Thanh Hien",
+        "duration": "12 hours",
+        "level": "basic",
+        "field": "Back End"
+    },
+    {
+        "id": 6,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "SQL Database Design",
+        "price": "$29.99",
+        "author": "Van Hung",
+        "duration": "8 hours",
+        "level": "advanced",
+        "field": "Back End"
+    },
+    {
+        "id": 7,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Data Visualization with Python",
+        "price": "$39.99",
+        "author": "Thi Mai",
+        "duration": "14 hours",
+        "level": "advanced",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 8,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Docker Fundamentals",
+        "price": "$59.99",
+        "author": "Duc Anh",
+        "duration": "10 hours",
+        "level": "advanced",
+        "field": "DevOps"
+    },
+    {
+        "id": 9,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Vue.js Essentials",
+        "price": "$45.99",
+        "author": "Hoang Long",
+        "duration": "12 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 10,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Node.js API Development",
+        "price": "$55.99",
+        "author": "Minh Tuan",
+        "duration": "16 hours",
+        "level": "advanced",
+        "field": "Back End"
+    },
+    {
+        "id": 11,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Machine Learning Basics",
+        "price": "$69.99",
+        "author": "Thanh Hien",
+        "duration": "20 hours",
+        "level": "advanced",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 12,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Kubernetes for Beginners",
+        "price": "$49.99",
+        "author": "Duc Anh",
+        "duration": "15 hours",
+        "level": "advanced",
+        "field": "DevOps"
+    },
+    {
+        "id": 13,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Advanced CSS & Sass",
+        "price": "$39.99",
+        "author": "Thi Mai",
+        "duration": "18 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 14,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Java Spring Boot",
+        "price": "$59.99",
+        "author": "Van Hung",
+        "duration": "25 hours",
+        "level": "advanced",
+        "field": "Back End"
+    },
+    {
+        "id": 15,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Data Analysis with R",
+        "price": "$45.99",
+        "author": "Thanh Hien",
+        "duration": "16 hours",
+        "level": "basic",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 16,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "CI/CD Pipeline with Jenkins",
+        "price": "$65.99",
+        "author": "Duc Anh",
+        "duration": "14 hours",
+        "level": "advanced",
+        "field": "DevOps"
+    },
+    {
+        "id": 17,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Angular Framework",
+        "price": "$49.99",
+        "author": "Hoang Long",
+        "duration": "20 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 18,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Django Web Development",
+        "price": "$55.99",
+        "author": "Van Hung",
+        "duration": "22 hours",
+        "level": "advanced",
+        "field": "Back End"
+    },
+    {
+        "id": 19,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Big Data with Hadoop",
+        "price": "$79.99",
+        "author": "Thi Mai",
+        "duration": "30 hours",
+        "level": "advanced",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 20,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "AWS Fundamentals",
+        "price": "$59.99",
+        "author": "Minh Tuan",
+        "duration": "18 hours",
+        "level": "basic",
+        "field": "DevOps"
+    },
+    {
+        "id": 21,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "TypeScript for Front End",
+        "price": "$45.99",
+        "author": "Hoang Long",
+        "duration": "15 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 22,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Ruby on Rails",
+        "price": "$55.99",
+        "author": "Van Hung",
+        "duration": "24 hours",
+        "level": "advanced",
+        "field": "Back End"
+    },
+    {
+        "id": 23,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Tableau for Data Visualization",
+        "price": "$49.99",
+        "author": "Thanh Hien",
+        "duration": "12 hours",
+        "level": "basic",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 24,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Terraform Infrastructure as Code",
+        "price": "$69.99",
+        "author": "Duc Anh",
+        "duration": "16 hours",
+        "level": "advanced",
+        "field": "DevOps"
+    },
+    {
+        "id": 25,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Responsive Web Design",
+        "price": "$35.99",
+        "author": "Thi Mai",
+        "duration": "10 hours",
+        "level": "basic",
+        "field": "Front End"
+    },
+    {
+        "id": 26,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "PHP & MySQL",
+        "price": "$39.99",
+        "author": "Minh Tuan",
+        "duration": "18 hours",
+        "level": "basic",
+        "field": "Back End"
+    },
+    {
+        "id": 27,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Statistical Analysis with Python",
+        "price": "$59.99",
+        "author": "Thanh Hien",
+        "duration": "20 hours",
+        "level": "advanced",
+        "field": "Data Analysis"
+    },
+    {
+        "id": 28,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Monitoring with Prometheus & Grafana",
+        "price": "$55.99",
+        "author": "Duc Anh",
+        "duration": "12 hours",
+        "level": "advanced",
+        "field": "DevOps"
+    },
+    {
+        "id": 29,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Web Animation with JavaScript",
+        "price": "$45.99",
+        "author": "Hoang Long",
+        "duration": "14 hours",
+        "level": "advanced",
+        "field": "Front End"
+    },
+    {
+        "id": 30,
+        "img": "https://res.cloudinary.com/dwmwqqkin/image/upload/v1737019318/12_yphhpm.png",
+        "courseName": "Go Programming for Backend",
+        "price": "$65.99",
+        "author": "Van Hung",
+        "duration": "22 hours",
+        "level": "advanced",
+        "field": "Back End"
+    }
+]

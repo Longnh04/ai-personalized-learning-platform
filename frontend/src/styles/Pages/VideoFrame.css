@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --primary-color: #2bef90;
+  --secondary-color: #24c476;
+  --gray-background-color: #eff3ea;
+  --active_background-color: #f0512333;
+}
+/* 
+.coursesplaylist_container{
+   
+} */
+
+.section_flex {
+  display: flex;
+}
+
+.video_container_flex-left {
+  width: 70%;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+  border-right: 0.2rem solid var(--gray-background-color);
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0px;
+  }
+}
+
+.video_list_container_flex-right {
+  width: 30%;
+  height: calc(100vh - 80px);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+    border-radius: 0px;
+  }
+
+  .course_list-title{
+    padding: .9rem;
+    .title{
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+  }
+
+  .courses_list {
+    display: flex;
+    flex-direction: column;
+
+    .course_item_container {
+      cursor: pointer;
+      display: flex;
+      padding: 0.5rem .9rem;
+
+ 
+      .video_desc_flex-left {
+        width: 90%;
+
+        .flex_top {
+          display: flex;
+          gap: 0.5rem;
+          margin-bottom: 0.5rem;
+
+          span {
+            font-size: 0.9rem;
+          }
+          p {
+            font-size: 0.9rem;
+            white-space: nowrap; /* Ngăn không cho dòng text xuống dòng mới */
+            overflow: hidden; /* Ẩn phần văn bản vượt quá chiều rộng */
+            text-overflow: ellipsis; /* Thêm "..." khi văn bản bị cắt */
+            width: 100%; /* Đảm bảo thẻ p chiếm hết chiều rộng của phần tử chứa */
+            font-weight: 400;
+          }
+        }
+
+        .flex_bottom {
+          display: flex;
+          gap: 0.5rem;
+          align-items: center;
+
+          i {
+            font-size: 0.9rem;
+            color: darkgray;
+          }
+
+          span {
+            font-size: 0.9rem;
+          }
+        }
+      }
+
+      .video_comp_flex-right {
+        width: 10%;
+        display: flex;
+        /* align-items: center; */
+        justify-content: flex-end;
+
+        .icon_active {
+          i {
+            color: darkgray;
+          }
+        }
+        .icon_active .fa-circle-check.active {
+          color: var(--primary-color); /* Thay đổi màu sắc */
+          transition: 0.3s ease-in-out;
+        }
+      }
+    }
+  }
+
+  .course_item_container.selected {
+    background-color: var(--active_background-color); /* Màu nền khi được chọn */
+    color: var(--black-color); /* Màu chữ (nếu cần) */
+    transition: 0.2s ease-in-out;
+  }
+}
+
+/* Tùy chỉnh thanh cuộn cho phần tử cụ thể */
+.video_container_flex-left,
+.video_list_container_flex-right {
+  overflow-y: scroll; /* Đảm bảo rằng phần tử có thanh cuộn dọc */
+}
+
+/* Tùy chỉnh thanh cuộn */
+.video_container_flex-left::-webkit-scrollbar,
+.video_list_container_flex-right::-webkit-scrollbar {
+  width: 10px; /* Độ rộng thanh cuộn */
+}
+
+/* Tùy chỉnh phần thanh cuộn (thành kéo) */
+.video_container_flex-left::-webkit-scrollbar-thumb,
+.video_list_container_flex-right::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color); /* Màu sắc thanh cuộn */
+  border-radius: 0px; /* Tạo bo góc cho thanh cuộn */
+ 
+}
+
+/* Tùy chỉnh phần thanh cuộn trống (track) */
+.video_container_flex-left::-webkit-scrollbar-track,
+.video_list_container_flex-right::-webkit-scrollbar-track {
+  background: var(--gray-background-color); /* Màu nền của thanh cuộn */
+  border-radius: 0px; /* Tạo bo góc cho track */
+}

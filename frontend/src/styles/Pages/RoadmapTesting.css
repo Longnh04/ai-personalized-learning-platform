@@ -1,0 +1,74 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black-color: #000000;
+    --white-color: #ffffff;
+    --primary-color: #2bef90;
+    --secondary-color: #24c476;
+    --gray-background-color: #eff3ea;
+}
+
+.roadmap_testing-container{
+    background-color: #BAD8B6;
+    box-sizing: border-box;
+    padding: 1.5rem; 
+    height: auto;
+
+    .return_back{
+        padding:0 1.5rem;
+        width: 100%;
+        cursor: pointer;
+        font-weight: 400;
+        color: var(--white-color);
+
+
+        i{
+            padding-right: 10px;
+        }
+    }
+
+    .roadmap_testing-header{
+        display: flex;
+        align-items: center;
+
+
+        .roadmap_testing-title{
+            width: 100%;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--white-color)
+        }
+    }
+
+
+    .roadmap_submit {
+        padding-right: 1.5rem;
+        display: flex; /* Sử dụng Flexbox */
+        justify-content: flex-end; /* Căn chỉnh các phần tử bên phải */
+
+
+        .btn_submit{
+            padding: 8px 30px;
+            background-color: var(--gray-background-color);
+            border-radius: .3rem;
+            font-weight: 400;
+
+
+            &:hover{
+                transform: translateY(-2px);
+                transition: .2s ease-in-out;
+            }
+        }
+    }
+  
+
+
+    
+
+
+}
