@@ -64,32 +64,7 @@ const RoadmapTesting = () => {
           {submitButton()}
         </NavLink>
       </div>
-      {/* roadmap overview */}
-      <div className="roadmap_overview-container ">
-        {RoadmapCard.map((roadmap) => (
-          <div key={roadmap.id} className="roadmap_overview-card">
-            <div className="roadmap_card-content">
-              <div className="content_flex-left">
-                <h2 className="roadmap_overview-card-title">{roadmap.title}</h2>
-                <p className="roadmap_overview-card-desc">
-                  {roadmap.description}
-                </p>
-              </div>
-              <div className="img_flex-right">
-                <img src={roadmap.image} alt="roadmap-image" />
-              </div>
-            </div>
-            <div className="roadmap_tech-container">
-              {roadmap.techs?.map((tech) => (
-                <div key={tech.id} className="roadmap_tech-item">
-                  <img src={tech.icon} alt={tech.name} />
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-
+     
       <div className="roadmap_recommendation-container  ">
         {/* Road map for user after render be start here! */}
         {roadmapData ? (
@@ -201,7 +176,31 @@ const RoadmapTesting = () => {
 
           </>
         ) : (
-          <p>Đang tải dữ liệu...</p>
+          <div className="roadmap_overview-container ">
+            {RoadmapCard.map((roadmap) => (
+              <div key={roadmap.id} className="roadmap_overview-card">
+                <div className="roadmap_card-content">
+                  <div className="content_flex-left">
+                    <h2 className="roadmap_overview-card-title">{roadmap.title}</h2>
+                    <p className="roadmap_overview-card-desc">
+                      {roadmap.description}
+                    </p>
+                  </div>
+                  <div className="img_flex-right">
+                    <img src={roadmap.image} alt="roadmap-image" />
+                  </div>
+                </div>
+                <div className="roadmap_tech-container">
+                  {roadmap.techs?.map((tech) => (
+                    <div key={tech.id} className="roadmap_tech-item">
+                      <img src={tech.icon} alt={tech.name} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+            <p>Start roadmap test to know your roadmap...</p>
+          </div>
         )}
       </div>
 

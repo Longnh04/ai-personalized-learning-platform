@@ -9,7 +9,7 @@ import { NavLink } from "react-router-dom";
 function Courses() {
   // 1. Thiết lập trạng thái cho trang hiện tại và số mục mỗi trang
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = 8;
 
   // 2. Tính toán tổng số trang và dữ liệu hiển thị trên mỗi trang
   const totalPages = Math.ceil(FreeCourses.length / itemsPerPage);

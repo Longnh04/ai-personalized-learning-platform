@@ -161,7 +161,6 @@ questions = [
         ]
     }
 ]
-
 # Hàm thêm câu hỏi vào database
 def add_questions_to_db(connection):
     cursor = connection.cursor()

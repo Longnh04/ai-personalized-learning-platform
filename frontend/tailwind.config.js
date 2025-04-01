@@ -12,6 +12,9 @@ module.exports = {
           to: { '--border-angle': '360deg' },
         },
       },
+      fontFamily: {
+        rubik: ["Rubik", "sans-serif"],
+      },
     },
   },
   plugins: [],

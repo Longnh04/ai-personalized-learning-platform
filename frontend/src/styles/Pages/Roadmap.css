@@ -40,8 +40,7 @@
 
 .roadmap_overview-container {
   display: flex;
-  padding: 1.5rem;
-  margin-top: 20px;
+  margin: 20px 0px;
   gap: 20px;
 
   .roadmap_overview-card {
