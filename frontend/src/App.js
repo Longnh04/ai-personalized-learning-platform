@@ -11,12 +11,16 @@ import Notifications from "./Pages/Notifications";
   
 import "./App.css";
 import RoadmapTesting from "./Pages/RoadmapTesting.jsx";
-import VideoFrame from "./Pages/VideoFrame.jsx";
+// import VideoFrame from "./Pages/VideoFrame.jsx";
+
+import VideoWatching from "./Pages/VideoWatching.jsx"
 
 import SignUp from "./components/auth/SignUp.jsx";
 import SignIn from "./components/auth/SignIn.jsx";
 
-import { AuthProvider } from '../src/context/AuthContext.jsx';
+import {AuthProvider} from '../src/context/AuthContext.jsx';
+
+import UserProfile from "./Pages/UserProfile.jsx";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -58,11 +62,17 @@ function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/notifications" element={<Notifications />} />
                 <Route path="/roadmaptesting" element={<RoadmapTesting/>}/>
-                <Route path="/videoframe" element={<VideoFrame/>}/>
+
+                {/* <Route path="/videoframe/:id" element={<VideoFrame />} /> */}
+                {/* Video watching route */}
+                <Route path="/watch/:courseId" element={<VideoWatching />} />
                 
-                {/* Fix Route syntax for auth components */}
+                {/* Authentication routes */}
+                
                 <Route path="/signup" element={<SignUp />} />
                 <Route path="/signin" element={<SignIn />} />
+
+                <Route path="/profile" element={<UserProfile />} />
               </Routes>
             </div>
           </div>

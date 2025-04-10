@@ -1,3 +1,4 @@
+import os
 import mysql.connector
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -5,17 +6,21 @@ import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
 import json
 import requests
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 app = Flask(__name__)
 app.config['JSON_SORT_KEYS'] = False
 CORS(app, resources={r"/predict": {"origins": "*"}})  # Cho phép tất cả các origin truy cập
 
-# Cấu hình kết nối database
+# Database configuration from environment variables
 DB_CONFIG = {
-    'host': 'localhost',
-    'user': 'root',  # Thay bằng username MySQL của bạn
-    'password': 'Long.me2004@qn',  # Thay bằng password MySQL của bạn
-    'database': 'bitc_online_lms'
+    'host': os.getenv('DB_HOST'),
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'database': os.getenv('DB_NAME')
 }
 
 # Dữ liệu câu hỏi demo
@@ -161,38 +166,6 @@ questions = [
         ]
     }
 ]
-# Hàm thêm câu hỏi vào database
-def add_questions_to_db(connection):
-    cursor = connection.cursor()
-    for i, question in enumerate(questions):
-        cursor.execute("INSERT INTO RoadmapQuestions (question_text, options) VALUES (%s, %s)",
-                       (question['question'], json.dumps(question['answers'])))
-    connection.commit()
-    cursor.close()
-
-# Hàm thêm câu trả lời mẫu vào database
-def add_sample_answers_to_db(connection):
-    cursor = connection.cursor()
-    sample_answers = [
-        (1, 1, 'Designing interfaces and working with colors and images'),
-        (1, 2, 'Building system structure and data processing'),
-        (1, 3, 'Analyze the problem thoroughly before solving'),
-        (1, 4, 'Average, focus more on functionality'),
-        (1, 5, 'Build system structure and logic'),
-        (1, 6, 'Programming and problem-solving'),
-        (1, 7, 'Interface and user experience'),
-        (1, 8, 'Beautiful and easy to use'),
-        (1, 9, 'Deep dive into how it works'),
-        (1, 10, 'Building robust systems'),
-        (1, 11, 'Technical architecture and implementation'),
-        (1, 12, 'Systematic and logical approach'),
-        (1, 13, '10-20 hours'),
-        (1, 14, 'In the afternoon')
-    ]
-    for answer in sample_answers:
-        cursor.execute("INSERT INTO user_answers (user_id, question_id, selected_answer) VALUES (%s, %s, %s)", answer)
-    connection.commit()
-    cursor.close()
 
 # Hàm lấy câu trả lời của người dùng
 def get_user_answers(connection, user_id):
@@ -208,13 +181,13 @@ def get_user_answers(connection, user_id):
         cursor.close()
 
         if not results:
-            print(f"Không tìm thấy câu trả lời cho user_id: {user_id}")
+            print(f"can't find answers for user id: {user_id}")
             return None
 
         return results
 
     except mysql.connector.Error as err:
-        print(f"Lỗi khi lấy câu trả lời của người dùng: {err}")
+        print(f"Error when get user answers!: {err}")
         return None
 
 # Hàm chuẩn bị dữ liệu cho model
@@ -238,13 +211,13 @@ def prepare_features(connection, user_answers, all_question_ids):
                 features[question_idx] = answer_index
 
             except ValueError:
-                print(f"Bỏ qua question_id không hợp lệ: {answer['question_id']}")
+                print(f"Skip question_id invalid: {answer['question_id']}")
                 continue
 
         return features.reshape(1, -1)
 
     except Exception as err:
-        print(f"Lỗi khi chuẩn bị vector đặc trưng: {err}")
+        print(f"Error while preparing feature vector: {err}")
         return None
 
 # Hàm huấn luyện model
@@ -261,7 +234,7 @@ def train_model(connection):
         cursor.close()
 
         if not results:
-            print("Không có dữ liệu huấn luyện")
+            print("No training data")
             return None
 
         # Chuẩn bị dữ liệu huấn luyện
@@ -284,11 +257,11 @@ def train_model(connection):
             model.fit(X, y)
             return model
         else:
-            print("Không đủ dữ liệu huấn luyện")
+            print("Not eanough data to train the model")
             return None
 
     except Exception as err:
-        print(f"Lỗi khi huấn luyện model: {err}")
+        print(f"Error training model: {err}")
         return None
 
 # Hàm lưu lộ trình vào database
@@ -329,8 +302,15 @@ def generate_reason(user_answers, roadmap_path, api_key):
 
         # Tạo prompt
         prompt = f"""
-        Dựa trên các câu trả lời sau từ người dùng: {user_answers},
-        hãy giải thích tại sao lộ trình {roadmap_path} phù hợp nhất với họ (xưng hô với người dùng là bạn).
+        Dựa trên các câu trả lời sau từ người dùng: {user_answers}, 
+        hãy trình bày lý do tại sao lộ trình nghề nghiệp {roadmap_path} là phù hợp nhất với họ.
+
+        Yêu cầu:
+        - Viết một đoạn văn giải thích rõ ràng, có chiều sâu, dài khoảng 2 đoạn.
+        - Xưng hô với người dùng là "bạn".
+        - Trình bày một cách thuyết phục: đoạn đầu phân tích lý do vì sao phù hợp, đoạn sau bổ sung thêm các điểm mạnh đặc trưng của người dùng phù hợp với lộ trình {roadmap_path}.
+        - Không cần liệt kê gạch đầu dòng, chỉ viết thành văn tự nhiên.
+        - Không viết quá ngắn hoặc cụt ý.
         """
 
         # Dữ liệu yêu cầu

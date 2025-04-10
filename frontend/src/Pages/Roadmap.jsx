@@ -59,7 +59,8 @@ const RoadmapTesting = () => {
           Developer, Fullstack Developer, Cyber Security,...
         </p>
       </div>
-      <div className="create_rm">
+      
+      <div className="create_rm mb-5">
         <NavLink to="/roadmaptesting" activeClassName="active">
           {submitButton()}
         </NavLink>
@@ -69,17 +70,20 @@ const RoadmapTesting = () => {
         {/* Road map for user after render be start here! */}
         {roadmapData ? (
           <>
-            <h3 className="font-semibold uppercase mt-4 mb-4 text-[#2bef90]"> <span className=" font-semibold uppercase mt-4 mb-4 text-black">Lộ trình của bạn là:</span> {roadmapData.roadmap_path}</h3>
-            <p>
-              <span className="font-semibold text-[#2bef90]">
-                Lý do vì sao bạn nên theo đuổi lộ trình này:
-              </span>
-              <span dangerouslySetInnerHTML={{
-                  __html: roadmapData.reason.replace(/\**\*/g, '<br />')
-                }} />
-            </p>
+            <div className="roadmap_recommendation_reason p-[1.5rem] bg-[#00000008] rounded-[15px] mb-4">
+              <h3 className="font-semibold uppercase mt-4 mb-4 text-[#2bef90]"> <span className=" font-semibold uppercase mt-4 mb-4 text-black">Lộ trình của bạn là:</span> {roadmapData.roadmap_path}</h3>
+              <p>
+                <span className="font-semibold text-[#2bef90]">
+                  Lý do vì sao bạn nên theo đuổi lộ trình này:
+                </span>
+                <span dangerouslySetInnerHTML={{
+                    __html: roadmapData.reason.replace(/\**\*/g, '<br />')
+                  }} />
+              </p>
+            </div>
+
             {roadmapData.courses && (
-          <>
+            <div className="roadmap_recommendation_courses">
             <h4 className="text-[#2bef90] font-semibold uppercase mt-4 mb-7">Các khóa học Basic phù hợp với bạn:</h4>
             <ul
               className="flex flex-wrap gap-4"
@@ -171,36 +175,38 @@ const RoadmapTesting = () => {
                   
               ))}
             </ul>   
-          </>  
+            </div> 
         )}
-
           </>
         ) : (
-          <div className="roadmap_overview-container ">
-            {RoadmapCard.map((roadmap) => (
-              <div key={roadmap.id} className="roadmap_overview-card">
-                <div className="roadmap_card-content">
-                  <div className="content_flex-left">
-                    <h2 className="roadmap_overview-card-title">{roadmap.title}</h2>
-                    <p className="roadmap_overview-card-desc">
-                      {roadmap.description}
-                    </p>
-                  </div>
-                  <div className="img_flex-right">
-                    <img src={roadmap.image} alt="roadmap-image" />
-                  </div>
-                </div>
-                <div className="roadmap_tech-container">
-                  {roadmap.techs?.map((tech) => (
-                    <div key={tech.id} className="roadmap_tech-item">
-                      <img src={tech.icon} alt={tech.name} />
+          <>
+            <div className="roadmap_overview-container ">
+              {RoadmapCard.map((roadmap) => (
+                <div key={roadmap.id} className="roadmap_overview-card">
+                  <div className="roadmap_card-content">
+                    <div className="content_flex-left">
+                      <h2 className="roadmap_overview-card-title">{roadmap.title}</h2>
+                      <p className="roadmap_overview-card-desc">
+                        {roadmap.description}
+                      </p>
                     </div>
-                  ))}
+                    <div className="img_flex-right">
+                      <img src={roadmap.image} alt="roadmap-image" />
+                    </div>
+                  </div>
+                  <div className="roadmap_tech-container">
+                    {roadmap.techs?.map((tech) => (
+                      <div key={tech.id} className="roadmap_tech-item">
+                        <img src={tech.icon} alt={tech.name} />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+              
+            </div>
             <p>Start roadmap test to know your roadmap...</p>
-          </div>
+          </>
         )}
       </div>
 

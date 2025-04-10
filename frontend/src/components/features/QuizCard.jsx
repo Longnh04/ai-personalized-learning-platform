@@ -96,7 +96,6 @@ const QuizCard = () => {
       }
     } catch (error) {
       console.error("Lỗi:", error);
-      alert("Không thể kết nối đến server");
     }
   };
 
