@@ -6,11 +6,26 @@ import { NavLink } from "react-router-dom";
 import { RoadmapCard } from "../data/pages/RoadmapData";
 import Footer from "../components/layout/Footer";
 import submitButton from "../components/common/submitButton";
-import PageLost from "../components/common/PageLost";
+// import PageLost from "../components/common/PageLost";
+import axios from 'axios';
 
 const RoadmapTesting = () => {
   const [roadmapData, setRoadmapData] = useState(null);
   const { user } = useAuth();
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const response = await axios.get('/api/courses');
+        setCourses(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchCourses();
+  }, []);
 
   useEffect(() => {
     // Kiểm tra user tồn tại trước khi fetch
@@ -37,12 +52,26 @@ const RoadmapTesting = () => {
     fetchRoadmap();
   }, [user]); // Thêm user vào dependencies để useEffect chạy lại khi user thay đổi
 
-  // Thêm loading state khi chưa có user
-  if (!user) {
-    return <div className=" h-full">
-       <PageLost />
-    </div>;
-  }
+  // // Thêm loading state khi chưa có user
+  // if (!user) {
+  //   return <div className=" h-full">
+  //      <PageLost />
+  //   </div>;
+  // }
+
+  // kiểm tra khóa học được gợi ý có trùng với id khóa học trong courses hay không
+  // nếu có thì chuyển sang trang khóa học tương ứng
+  const handleCourseClick = (courseId) => {
+    const course = courses.find(course => course.id === courseId);
+    if (course) {
+      window.location.href = `/watch/${courseId}`; // Chuyển hướng đến trang khóa học
+    } else {
+      console.error('Khóa học không tồn tại');  
+    }
+
+  };
+
+
 
   return (
     <React.Fragment>
@@ -84,53 +113,61 @@ const RoadmapTesting = () => {
 
             {roadmapData.courses && (
             <div className="roadmap_recommendation_courses">
-            <h4 className="text-[#2bef90] font-semibold uppercase mt-4 mb-7">Các khóa học Basic phù hợp với bạn:</h4>
-            <ul
-              className="flex flex-wrap gap-4"
-            >
-              {roadmapData.courses.basic && roadmapData.courses.basic.map((course) => (
-                 <div className="course_recommend max-w-[250px] mb-4 cursor-pointer ">
-                 <div 
-                    className="img_contain"
-                    style={{
-                      borderTopLeftRadius: "15px",
-                      borderTopRightRadius: "15px",
-                      backgroundSize: "cover",
-                      backgroundPosition: "center",
-                      width: "100%"
-                    }}
-                 >
-                    <img
-                    style={{
-                      borderTopLeftRadius: "15px",
-                      borderTopRightRadius: "15px",
-                      width: "100%"
-                    }}
-                    
-                    src={course.img} alt="image-courses"/>
-                 </div>
-
-                <div 
-                    className="course_decs p-[1.2rem] "
-                    style={{
-                       backgroundColor: "#00000008",
-                       borderBottomLeftRadius: "15px",
-                       borderBottomRightRadius: "15px",
-
-                    }}    
+              <h4 className="text-[#2bef90] font-semibold uppercase mt-4 mb-7">Các khóa học Basic phù hợp với bạn:</h4>
+                <ul
+                  className="flex flex-wrap gap-4"
                 >
-                      <li className="font-semibold mb-1" key={course.id}>{course.courseName}</li>
-                      <li className="font-normal mb-1 text-red-500">{"Price : "} {course.price}</li>
-                      <div className="footer_course flex justify-between">
-                        <li className="font-normal">{course.author}</li>
-                        <li className="font-normal">{course.duration}</li>
-                      </div>
-                </div>
-               </div>
-                  
+
+              {roadmapData.courses.basic && roadmapData.courses.basic.map((course) => (
+              <NavLink
+                onClick={() => handleCourseClick(course.id)} // Gọi hàm khi nhấn vào khóa học
+                to={`/watch/${course.id}`}
+                key={course.id}
+              >
+                    <div className="course_recommend max-w-[250px] mb-4 cursor-pointer ">
+                    <div 
+                        className="img_contain"
+                        style={{
+                          borderTopLeftRadius: "15px",
+                          borderTopRightRadius: "15px",
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          width: "100%"
+                        }}
+                    >
+                        <img
+                        style={{
+                          borderTopLeftRadius: "15px",
+                          borderTopRightRadius: "15px",
+                          width: "100%"
+                        }}
+                        
+                        src={course.img} alt="image-courses"/>
+                    </div>
+
+                    <div 
+                        className="course_decs p-[1.2rem] "
+                        style={{
+                          backgroundColor: "#00000008",
+                          borderBottomLeftRadius: "15px",
+                          borderBottomRightRadius: "15px",
+
+                        }}    
+                    >
+                          <li className="font-semibold mb-1" key={course.id}>{course.courseName}</li>
+                          <li className="font-normal mb-1 text-red-500">{"Price : "} {course.price}</li>
+                          <div className="footer_course flex justify-between">
+                            <li className="font-normal">{course.author}</li>
+                            <li className="font-normal">{course.duration}</li>
+                          </div>
+                    </div>
+                  </div>
+              </NavLink>  
               ))}
-            </ul>
-            <h4 className="text-[#2bef90] font-semibold uppercase mt-4 mb-7">Các khóa học Advanced phù hợp với bạn:</h4>
+             
+
+                </ul>
+              <h4 className="text-[#2bef90] font-semibold uppercase mt-4 mb-7">Các khóa học Advanced phù hợp với bạn:</h4>
             <ul className="flex flex-wrap gap-4">
               {roadmapData.courses.advanced && roadmapData.courses.advanced.map((course) => (
                   
@@ -138,7 +175,7 @@ const RoadmapTesting = () => {
                    <div 
                       className="img_contain"
                       style={{
-                        borderTopLeftRadius: "15px",
+                        borderTopLeftRadius: "15px",   
                         borderTopRightRadius: "15px",
                         backgroundSize: "cover",
                         backgroundPosition: "center",

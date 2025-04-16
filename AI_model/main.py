@@ -377,29 +377,8 @@ def get_relevant_courses(roadmap_path):
     except json.JSONDecodeError as e:
         print(f"Lỗi khi đọc file JSON: {e}")
         return {"basic": [], "advanced": []}
-
-# API endpoint để thêm câu hỏi vào database
-@app.route('/api/add-questions', methods=['POST'])
-def add_questions():
-    try:
-        connection = mysql.connector.connect(**DB_CONFIG)
-        add_questions_to_db(connection)
-        connection.close()
-        return jsonify({'message': 'Câu hỏi đã được thêm vào database'}), 200
-    except mysql.connector.Error as err:
-        return jsonify({'error': str(err)}), 500
-
-# API endpoint để thêm câu trả lời mẫu vào database
-@app.route('/api/add-sample-answers', methods=['POST'])
-def add_sample_answers():
-    try:
-        connection = mysql.connector.connect(**DB_CONFIG)
-        add_sample_answers_to_db(connection)
-        connection.close()
-        return jsonify({'message': 'Câu trả lời mẫu đã được thêm vào database'}), 200
-    except mysql.connector.Error as err:
-        return jsonify({'error': str(err)}), 500
-
+ 
+ 
 # API endpoint để dự đoán lộ trình
 @app.route('/predict', methods=['POST'])
 def predict():

@@ -46,7 +46,15 @@
   font-weight: 200;
   font-style: normal;
 }
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
 
+  .main {
+    flex-direction: column;
+  }
+}
 .content {
   flex: 1;  
   background-color: #ffffff;
@@ -87,5 +95,34 @@
 @keyframes l7 {
   to {
     transform: rotate(.5turn);
+  }
+}
+
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar by default on mobile */
+    position: fixed;
+    top: 66px; /* Below the header */
+    left: 0;
+    width: 70%; /* Adjust width as needed */
+    height: calc(100vh - 66px); /* Cover the remaining screen height */
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s ease-in-out;
+    transform: translateX(-100%); /* Initially hidden */
+    
+  }
+
+  .sidebar.show {
+    display: block;
+    transform: translateX(0); /* Slide in when menu is open */
+    color: #000000;
+  }
+
+  .main {
+    flex-direction: column;
+    height: calc(100vh - 66px); /* Adjust main height */
   }
 }

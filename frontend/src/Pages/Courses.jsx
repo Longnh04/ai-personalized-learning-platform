@@ -5,7 +5,7 @@ import "../styles/Pages/Courses.css";
 import Footer from "../components/layout/Footer";
 import Pagination from "../components/features/PaginationComponent";
 import { NavLink } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 function Courses() {
   const [courses, setCourses] = useState([]);
@@ -15,7 +15,7 @@ function Courses() {
   useEffect(() => {
     const fetchCourses = async () => {
       try {
-        const response = await axios.get('/api/courses');
+        const response = await axios.get("/api/courses");
         setCourses(response.data);
       } catch (error) {
         console.error(error);
@@ -28,7 +28,7 @@ function Courses() {
   const totalPages = Math.ceil(courses.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentCourses = courses.slice(startIndex, startIndex + itemsPerPage);
-  
+
   // Hàm xử lý khi chuyển trang
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
@@ -36,8 +36,8 @@ function Courses() {
     }
   };
 
-  const proCourses = courses.filter(course => !course.isFree);
-  console.log('Khóa học trả phí:', proCourses);  
+  const proCourses = courses.filter((course) => !course.isFree);
+  console.log("Khóa học trả phí:", proCourses);
 
   return (
     <React.Fragment>
@@ -48,39 +48,37 @@ function Courses() {
         </h1>
         <p className="pro_courses-title-desc">Payment to learn these courses</p>
         <div className="pro_courses">
-        {proCourses.length > 0 ? (
-          proCourses.map((proCourse) => (
-            <NavLink
-              key={proCourse.id}
-              to={`/watch/${proCourse.id}`} // Điều hướng đến trang VideoWatching với courseId
-              className="pro_courses-item"
-            >
-              {/* Nội dung khóa học */}
-              <div className="pro_course-img">
-                <img src={proCourse.img} alt={proCourse.courseName} />
-              </div>
-              <div className="pro_course-desc">
-                <h3>{proCourse.courseName}</h3>
-                <div className="pro_course-price">
-                  <span>{proCourse.oldPrice}</span>
-                  <p>{proCourse.newPrice}</p>
+          {proCourses.length > 0 ? (
+            proCourses.map((proCourse) => (
+              <NavLink
+                key={proCourse.id}
+                to={`/watch/${proCourse.id}`} // Điều hướng đến trang VideoWatching với courseId
+                className="pro_courses-item"
+              >
+                {/* Nội dung khóa học */}
+                <div className="pro_course-img">
+                  <img src={proCourse.img} alt={proCourse.courseName} />
                 </div>
-                <div className="pro_course-flex">
-                  <p>{proCourse.author}</p>
-                  <p>
-                    <i className="fa-solid fa-clock-rotate-left"></i>{" "}
-                    {proCourse.duration}
-                  </p>
+                <div className="pro_course-desc">
+                  <h3>{proCourse.courseName}</h3>
+                  <div className="pro_course-price">
+                    <span>{proCourse.oldPrice}</span>
+                    <p>{proCourse.newPrice}</p>
+                  </div>
+                  <div className="pro_course-flex">
+                    <p>{proCourse.author}</p>
+                    <p>
+                      <i className="fa-solid fa-clock-rotate-left"></i>{" "}
+                      {proCourse.duration}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </NavLink>
-          ))
-        ) : (
-          <p>Không có khóa học trả phí.</p>
-        )}
+              </NavLink>
+            ))
+          ) : (
+            <p>Không có khóa học trả phí.</p>
+          )}
         </div>
-
-
 
         {/* Free courses */}
         <h1 className="free_course-title">Free Courses</h1>
@@ -88,29 +86,33 @@ function Courses() {
           Sign up to learn these free courses
         </p>
         <div className="free_courses">
-          {currentCourses.filter(course => course.isFree).map((freeCourse) => (
-            <div
-              key={freeCourse.id}
-              className="free_courses-item"
-            >
-              <div className="free_course-img">
-                <img src={freeCourse.img} alt={freeCourse.courseName} />
-              </div>
-              <div className="free_course-desc">
-                <h3>{freeCourse.courseName}</h3>
-                <p className="free-course-price text-red-500 font-medium ">
-                  {freeCourse.price}
-                </p>
-                <div className="free_course-flex">
-                  <p>{freeCourse.author}</p>
-                  <p>
-                    <i className="fa-solid fa-clock-rotate-left"></i>{" "}
-                    {freeCourse.duration}
-                  </p>
+          {currentCourses
+            .filter((course) => course.isFree)
+            .map((freeCourse) => (
+              <NavLink
+                key={freeCourse.id}
+                to={`/watch/${freeCourse.id}`} // Điều hướng đến trang VideoWatching với courseId
+              >
+                <div key={freeCourse.id} className="free_courses-item">
+                  <div className="free_course-img">
+                    <img src={freeCourse.img} alt={freeCourse.courseName} />
+                  </div>
+                  <div className="free_course-desc">
+                    <h3>{freeCourse.courseName}</h3>
+                    <p className="free-course-price text-red-500 font-medium ">
+                      {freeCourse.price}
+                    </p>
+                    <div className="free_course-flex">
+                      <p>{freeCourse.author}</p>
+                      <p>
+                        <i className="fa-solid fa-clock-rotate-left"></i>{" "}
+                        {freeCourse.duration}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </NavLink>
+            ))}
         </div>
       </div>
 
@@ -129,4 +131,3 @@ function Courses() {
 }
 
 export default Courses;
- 

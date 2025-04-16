@@ -156,3 +156,18 @@
     }
   }
 }
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .pro_courses,
+  .free_courses {
+    display: flex;
+    flex-direction: column; /* Stack course items on top of each other */
+    align-items: center; /* Center items horizontally */
+  }
+
+  .pro_courses .pro_courses-item,
+  .free_courses .free_courses-item {
+    max-width: 100%; /* Make course items take full width */
+    width: 100%;
+  }
+}

@@ -2,12 +2,12 @@ import React from "react";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import "../../styles/Layout/Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ isMobileMenuOpen }) => {
   const navigate = useNavigate();
   const location = useLocation();
   
   return (
-    <div className="sidebar">
+    <div className={`sidebar ${isMobileMenuOpen ? "show" : ""}`}>
       <nav>   
         <ul>
           <li 

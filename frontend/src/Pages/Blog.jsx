@@ -4,7 +4,7 @@ import '../styles/Pages/Blog.css';
 import { blogPosts } from "../data/pages/BlogData";
 import Link from '../data/Link';   
 
-const Blog = () => {
+const Blog = () => {  
   return (
     <React.Fragment>   
       <div className="blog_container">
